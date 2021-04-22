@@ -70,19 +70,18 @@ const addContact = async (name, email, phone) => {
   try {
     const data = await fs.readFile(contactsPath, "utf8");
     const result = JSON.parse(data.toString());
-    const id = result.length;
+    const lastId = result[result.length - 1].id;
 
-    // console.log(id);
+    // console.log(lastId);
 
     const contactNew = {
-      id: Number(id) + 2,
+      id: Number(lastId) + 1,
       name,
       email,
       phone,
     };
 
     const addedContacts = JSON.stringify([...result, contactNew], null, "\t");
-
     await fs.writeFile(contactsPath, addedContacts);
 
     const dataNew = await fs.readFile(contactsPath, "utf8");
