@@ -8,8 +8,8 @@ const listContacts = async () => {
   try {
     const list = await fs.readFile(contactsPath, "utf8");
     const result = JSON.parse(list.toString());
-    console.table(result);
-    // return result;
+    // console.table(result);
+    return result;
   } catch (error) {
     console.error(error.message);
   }
@@ -38,8 +38,8 @@ const getContactById = async (contactId) => {
     const filteredContacts = result.find(
       (contact) => contact.id === Number(contactId)
     );
-    console.table(filteredContacts);
-    // return filteredContacts;
+    // console.table(filteredContacts);
+    return filteredContacts;
   } catch (error) {
     console.error(error);
   }
@@ -59,8 +59,8 @@ const removeContact = async (contactId) => {
     const dataNew = await fs.readFile(contactsPath, "utf8");
     const resultNew = JSON.parse(dataNew.toString());
 
-    console.table(resultNew);
-    // return resultNew;
+    // console.table(resultNew);
+    return resultNew;
   } catch (error) {
     console.error(error);
   }
@@ -87,8 +87,8 @@ const addContact = async (name, email, phone) => {
     const dataNew = await fs.readFile(contactsPath, "utf8");
     const resultNew = JSON.parse(dataNew.toString());
 
-    console.table(resultNew);
-    // return resultNew;
+    // console.table(resultNew);
+    return resultNew;
   } catch (error) {
     console.error(error);
   }
